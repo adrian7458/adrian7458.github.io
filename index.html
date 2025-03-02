@@ -11,57 +11,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<!-- Meta Pixel Code -->
-<?php
-// ------------------------------------------------
-// This is a Facebook Conversions API PHP Integration
-// Created by: Gilberto C.
-// InteractiveUtopia.com
-// ------------------------------------------------
-// First, we need to start by obtaining the information that will be sent to Facebook
-// ------------------------------------------------
-
-// ------------------------------------------------
-// Get Current User IP Address
-if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $user_ip = $_SERVER['HTTP_CLIENT_IP'];
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $user_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-} else {
-    $user_ip = $_SERVER['REMOTE_ADDR'];
-}
-
-// ------------------------------------------------
-// Get current page
-$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-//echo $actual_link;
-
-// ------------------------------------------------
-// Generate Json code to provide
-$submitJson = '{
-    "data": [
-                {
-                    "action_source": "website",
-                    "event_name": "ViewContent",
-                    "event_time": ' . time() . ',
-                    "event_source_url": "' . $actual_link . '",
-                    "user_data": {
-                        "client_ip_address": "' . $user_ip . '",
-                        "client_user_agent": "' . $_SERVER['HTTP_USER_AGENT'] . '"
-                    }
-                }
-    ]
-}';
-
-// ------------------------------------------------
-// Set the Facebook Conversions API URL
-$url = "https://graph.facebook.com/v12.0/{Pixel ID}/events";
-
-// ------------------------------------------------
-// Use cURL to send the POST request
-include './inc/objects/curl.class.php';
-$_curl_ = new CurlServer();
-$_curl_->post_request($url, $submitJson);
 
 	<body class="is-preload">
 
@@ -116,6 +65,9 @@ $_curl_->post_request($url, $submitJson);
 								<h2 class="major">Libros</h2>
 								<span class="image main"><img src="images/2pic.png" alt="" /></span>
 								<p>De momento tengo estos 3 libros publicados en amazon.</p>
+								<button onclick="window.location.href='https://www.amazon.com/-/es/Adri%C3%A1n-Rosales-M%C3%A1rquez-ebook/dp/B07MYGSH6K'">
+    Comprar en Amazón
+</button>
 								<p><strong><a href="https://www.amazon.com/-/es/Adri%C3%A1n-Rosales-M%C3%A1rquez-ebook/dp/B07MYGSH6K">1. Nacemos con miedos, Moriremos con miedos: </a></strong> Este libro está en físico y lo recomiendo para cualquier edad, desde niños, adolescentes, adultos y hasta 3era edad. </p>
 								<p><strong><a href="https://www.amazon.com/-/es/Adri%C3%A1n-Rosales-M%C3%A1rquez-ebook/dp/B07NGJDWZM/ref=sr_1_2?qid=1669333019&refinements=p_27%3AAdri%C3%A1n+Rosales+M%C3%A1rquez&s=digital-text&sr=1-2">2. El darwinismo del sistema económico venezolano: </a></strong> Es un libro digital que está enfocado a una investigación de mercado que realice en la economía venezolana durante los años 2018 y principios del 2019. </p>
 								<p><strong><a href="https://www.amazon.com/-/es/Adri%C3%A1n-Rosales-M%C3%A1rquez-ebook/dp/B086PY24LM/ref=sr_1_1?qid=1669333019&refinements=p_27%3AAdri%C3%A1n+Rosales+M%C3%A1rquez&s=digital-text&sr=1-1">3. Como ganarle a los cisnes: </a></strong> Es un libro digital que lo escribí durante la pandemia, todos estábamos como pajaritos encerrados en jaulas y aproveché a escribir un poco sobre los diversos fenómenos económicos que muchas veces son provocados para un fin determinado. Algunos economistas le suelen llamar cisnes negros y cisnes verdes.</p>
